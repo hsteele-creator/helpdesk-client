@@ -1,0 +1,19 @@
+#register-form {
+  background-color: #ffffff;
+  height: 500px;
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#register-form input {
+  width: 220px;
+  padding: 10px 20px;
+  margin: 6px auto;
+  border: 1px solid blue;
+}
+
+#register-form span {
+  color: blue;
+}
