@@ -17,3 +17,15 @@
 #register-form span {
   color: blue;
 }
+
+#register-form span:hover {
+    cursor: pointer;
+}
+
+#register-form h1 {
+    margin-bottom: 20px;
+}
+
+.switch-state {
+    margin: 20px 0;
+}
