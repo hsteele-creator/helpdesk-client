@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Nav from "./Components/Nav";
 import Register from "./Components/Register";
+import Dashboard from "./Components/Dashboard";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -15,7 +16,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/register" element={<Register />} />
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<Dashboard />} />
         <Route path="/tickets" />
         <Route path="/contacts" />
         <Route path="/add-ticket" />

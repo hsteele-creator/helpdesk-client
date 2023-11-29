@@ -1,0 +1,53 @@
+#dashboard-main {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#dashboard-top {
+    width: 95vw;
+    background-color: #FFFFFF;
+    height: 80px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#sort-container select {
+    margin-left: 6px;
+}
+
+#dashboard-top-middle {
+    display: flex;
+}
+
+#dashboard-top-middle button {
+    margin-right: 8px;
+}
+
+#agent-info-container {
+    width:35px;
+    height: 35px;
+    background-color: #FFF3A8;
+    color: grey;
+    font-size: 14px;
+    border-radius: 6px;
+    border-radius: 0.5px solid grey;
+}
+
+#search {
+    padding: 7px 10px;
+    margin: 0 4px;
+    border-radius: 2px;
+    border: 0.5px solid grey;
+}
+
+@media screen and (max-width: 600px) {
+    #dashboard-main {
+        flex-direction: column;
+    }
+
+    #dashboard-top {
+        width: 100vw;
+    }
+}

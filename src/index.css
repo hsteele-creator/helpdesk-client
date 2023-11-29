@@ -31,6 +31,27 @@ body {
 
 .btn-color {
   background-color: #12344D;
+  padding: 8px;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  margin: 2px;
+}
+
+.btn-light {
+  background-color: #EAEDF0;
+  padding: 8px 10px;
+  border: 0.5px solid grey;
+  border-radius: 2px;
+  margin: 2px;
+}
+
+.btn-light:hover {
+  cursor: pointer;
+}
+
+.btn-color:hover {
+  cursor: pointer;
 }
 
 .btn {
