@@ -2,6 +2,7 @@ import "../Css/Dashboard.css";
 import React from "react";
 import Nav from "./Nav";
 import { useCookies } from "react-cookie";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const [cookies, setCookie, removeCookie] = useCookies(null);
@@ -17,7 +18,9 @@ const Dashboard = () => {
           </div>
 
           <div id="dashboard-top-middle">
-            <button className="btn-light">Add Ticket</button>
+            <Link to="/add-ticket">
+              <button className="btn-light">Add Ticket</button>
+            </Link>
 
             <button className="btn-light">Add Contact</button>
 

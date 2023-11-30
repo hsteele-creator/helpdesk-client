@@ -15,15 +15,10 @@ const Register = () => {
     company: "",
   });
 
-  console.log(cookies);
-
-  console.log(userData);
-
   const handleSwitch = (newState) => {
     setState(newState);
   };
 
-  console.log(state);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

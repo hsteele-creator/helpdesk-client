@@ -1,3 +1,4 @@
+// Update state on change of input value
 export const handleChange = (e, state, setState) => {
     const {name, value} = e.target
     setState({

@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Nav from "./Components/Nav";
 import Register from "./Components/Register";
 import Dashboard from "./Components/Dashboard";
+import AddTicket from "./Components/AddTicket";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -19,7 +20,7 @@ root.render(
         <Route path="/" element={<Dashboard />} />
         <Route path="/tickets" />
         <Route path="/contacts" />
-        <Route path="/add-ticket" />
+        <Route path="/add-ticket" element={<AddTicket />} />
         <Route path="add-contact" />
       </Routes>
     </BrowserRouter>

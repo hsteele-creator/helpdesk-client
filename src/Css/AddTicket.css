@@ -1,0 +1,15 @@
+#add-ticket-main {
+    display: flex;
+}
+
+#add-ticket-form-container {
+    width: 90vw;
+}
+
+#add-ticket-form-container form input, select {
+    width: 500px;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 4px;
+    border: 0.5px solid grey;
+}
