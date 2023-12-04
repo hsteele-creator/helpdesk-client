@@ -1,15 +1,69 @@
 #add-ticket-main {
     display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
 }
 
 #add-ticket-form-container {
-    width: 90vw;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    box-sizing: border-box;
 }
 
-#add-ticket-form-container form input, select {
+.add-ticket-input {
     width: 500px;
     margin: 10px auto;
     padding: 10px;
     border-radius: 4px;
     border: 0.5px solid grey;
+}
+
+#add-ticket-main select {
+    appearance: none;
+    width: 520px;
+}
+
+.add-ticket-input select-selected:after {
+    background-color: blue;
+}
+
+#add-ticket-btn {
+    width: 100px;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+    background-color: #12344D;
+    color: white;
+}
+
+#add-ticket-btn:hover {
+    cursor: pointer;
+}
+
+input[type=textarea] {
+    height: 100px;
+    text-align: left;
+    padding: none;
+}
+
+#add-ticket-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width:800px) {
+    .add-ticket-input {
+        width: 400px;
+    }
+
+    #add-ticket-main select {
+        width: 420px;
+        padding: 8px;
+    }
 }

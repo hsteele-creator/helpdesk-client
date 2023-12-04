@@ -7,14 +7,13 @@ import "../Css/Nav.css"
 
 
 const Nav = () => {
-    console.log(new Date())
     return (
         <>
         <div id="nav-container">
 
             <div id="nav-links-container">
             <NavLink to="/"><img src={dashboard} /></NavLink>
-            <NavLink to="/contacts"><img src={ticket} /></NavLink>
+            <NavLink to="/tickets"><img src={ticket} /></NavLink>
             <NavLink to="/contacts"><img src={contacts} /></NavLink>
             {/* <NavLink to="/solutions">Solutions</NavLink> */}
             </div>

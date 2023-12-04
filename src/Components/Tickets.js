@@ -1,12 +1,23 @@
-import "../Css/Dashboard.css";
-import React from "react";
+import "../Css/Tickets.css";
+import React, { useState } from "react";
 import Nav from "./Nav";
 import { useCookies } from "react-cookie";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import {getTickets} from "../helperFunctions";
+
+import Ticket from "./Ticket";
 
 const Dashboard = () => {
   const [cookies, setCookie, removeCookie] = useCookies(null);
-  console.log(cookies);
+  const [tickets, setTickets] = useState(null);
+
+  useEffect(() => {
+    getTickets(cookies.company, setTickets);
+  }, []);
+
+  console.log(tickets)
+
   return (
     <div id="dashboard-main">
       <Nav />
@@ -35,7 +46,11 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div id="dashboard-tickets"></div>
+        <div id="dashboard-tickets">
+          {tickets?.map(t => {
+            return <Ticket subject={t.subject} type={t.type} priority={t.priority} status={t.status} agent={t.agent} company={t.company} date={t.date} description={t.description}contact_first={t.contact_first} contact_last={t.contact_last} />
+          })}
+        </div>
       </div>
     </div>
   );
