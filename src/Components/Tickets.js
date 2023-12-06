@@ -48,7 +48,7 @@ const Dashboard = () => {
 
         <div id="dashboard-tickets">
           {tickets?.map(t => {
-            return <Ticket subject={t.subject} type={t.type} priority={t.priority} status={t.status} agent={t.agent} company={t.company} date={t.date} description={t.description}contact_first={t.contact_first} contact_last={t.contact_last} />
+            return <Ticket id={t.id} subject={t.subject} type={t.type} priority={t.priority} status={t.status} agent={t.agent} company={t.company} date={t.date} description={t.description}contact_first={t.contact_first} contact_last={t.contact_last} />
           })}
         </div>
       </div>

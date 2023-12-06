@@ -48,3 +48,15 @@ export const getContacts = async (company, setState) => {
       console.error(e);
     }
   };
+
+  // Get ticket by id
+  export const getTicketById = async (id, setState) => {
+    try {
+      const response = await fetch(`http://localhost:8000/get-ticket/${id}`);
+
+      const data = await response.json();
+      setState(data)
+    } catch (e) {
+      console.error(e);
+    }
+  };
