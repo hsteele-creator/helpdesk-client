@@ -1,0 +1,14 @@
+.response-container {
+    width: 60vw;
+    margin: 50px auto;
+    height: 300px;
+    background-color: #F4F7F8;
+    margin-left: 0;
+    border-radius: 6px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.hidden {
+    background-color: #FDF0E0;
+}

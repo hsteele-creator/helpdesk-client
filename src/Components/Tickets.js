@@ -16,7 +16,7 @@ const Dashboard = () => {
     getTickets(cookies.company, setTickets);
   }, []);
 
-  console.log(tickets)
+  console.log(cookies)
 
   return (
     <div id="dashboard-main">
@@ -42,7 +42,7 @@ const Dashboard = () => {
           </div>
 
           <div id="agent-info-container" className="flex-center">
-            <p>{cookies.firstName.slice(0, 1).toUpperCase()}</p>
+            <p>{cookies.firstName?.slice(0, 1).toUpperCase()}</p>
           </div>
         </div>
 

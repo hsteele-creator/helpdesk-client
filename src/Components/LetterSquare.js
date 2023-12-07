@@ -12,7 +12,7 @@ const LetterSquare = ({ firstName }) => {
         }}
       >
         <p className="first-letter">
-          {firstName.slice(0, 1).toUpperCase()}
+          {firstName?.slice(0, 1).toUpperCase()}
         </p>
       </div>
     </>
