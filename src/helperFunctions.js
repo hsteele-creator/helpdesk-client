@@ -60,3 +60,47 @@ export const getContacts = async (company, setState) => {
       console.error(e);
     }
   };
+
+  // Add response 
+  export const addResponse = async (response, setResponse) => {
+    try {
+      const newResponse = await fetch("http://localhost:8000/add-response", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(response),
+      });
+
+      const data = await newResponse.json();
+      setResponse(null)
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  // Update ticket properties
+  export const updateTicketProperties = async (e, currentTicket) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(
+        "http://localhost:8000/edit-ticket-properties",
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(currentTicket),
+        }
+      );
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  // Get responses by ticket id
+  export const getTicketResponses = async (id, setResponse) => {
+    try {
+      const response = await fetch(`http://localhost:8000/responses/${id}`);
+      const data = await response.json();
+      setResponse(data)
+    } catch(e) {
+      console.error(e)
+    }
+  }
