@@ -10,6 +10,7 @@ import Register from "./Components/Register";
 import Tickets from "./Components/Tickets";
 import AddTicket from "./Components/AddTicket";
 import CustomerTicket from "./Components/CustomerTicket";
+import AddContact from "./Components/AddContact";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -22,7 +23,7 @@ root.render(
         <Route path="/tickets" element={<Tickets />} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/add-ticket" element={<AddTicket />} />
-        <Route path="add-contact" />
+        <Route path="add-contact" element={<AddContact />} />
         <Route path="/tickets/:id" element={<CustomerTicket />} />
       </Routes>
     </BrowserRouter>

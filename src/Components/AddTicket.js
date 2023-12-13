@@ -37,12 +37,22 @@ const AddTicket = () => {
         body: JSON.stringify(ticketData),
       });
 
-      setTicketData({});
+      setTicketData({
+        subject: "",
+        contact_email: "",
+        type: "Question",
+        priority: "Low",
+        status: "Open",
+        agent: "",
+        company: cookies.company,
+        description: "",
+        date: new Date(),
+      });
 
       const data = await response.json();
 
       if (!data.detail) {
-        alert("TICKET ADDED SUCCESSFULLY!");
+        alert("Ticket added succesfully!");
       } else {
         setError(data.detail);
       }
@@ -57,7 +67,11 @@ const AddTicket = () => {
         <Nav />
 
         <div id="add-ticket-form-container" className="flex-center">
-          <form id="add-ticket-form" className="flex-column" onSubmit={addTicket}>
+          <form
+            id="add-ticket-form"
+            className="flex-column"
+            onSubmit={addTicket}
+          >
             <label for="subject">Subject</label>
             <input
               required
