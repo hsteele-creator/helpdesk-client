@@ -33,6 +33,8 @@ const Register = () => {
 
     const data = await response.json();
 
+    console.log(data)
+
     if (data.detail) {
       setError(data.detail);
     } else if (data === "User does not exist or password is incorrect") {

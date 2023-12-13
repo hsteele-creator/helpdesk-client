@@ -73,7 +73,7 @@ const CustomerTicket = () => {
                 )}
               </div>
               {allResponses?.map(r => {
-                return <Response editMode={false} first={r.firstName} agent={r.agent} type={r.type} ticketId={r.ticketId}/>
+                return <Response content={r.content} editMode={false} first={r.firstName} agent={r.agent} type={r.type} ticketId={r.ticketId}/>
               })}
               {responseOpen === "Normal" && <Response setResponseOpen={setResponseOpen} editMode={true} first={currentTicket.contact_first} last={currentTicket.contact_last} agent={currentTicket.agent} type={"Normal"} ticketId={currentTicket.id} />}
               {responseOpen === "Hidden" &&  <Response setResponseOpen={setResponseOpen} editMode={true} first={currentTicket.contact_first} last={currentTicket.contact_last} agent={currentTicket.agent} type={"Hidden"} ticketId={currentTicket.id} />}

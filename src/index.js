@@ -5,7 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Nav from "./Components/Nav";
+import Contacts from "./Components/Contacts";
 import Register from "./Components/Register";
 import Tickets from "./Components/Tickets";
 import AddTicket from "./Components/AddTicket";
@@ -20,7 +20,7 @@ root.render(
         <Route path="/register" element={<Register />} />
         <Route path="/" />
         <Route path="/tickets" element={<Tickets />} />
-        <Route path="/contacts" />
+        <Route path="/contacts" element={<Contacts />} />
         <Route path="/add-ticket" element={<AddTicket />} />
         <Route path="add-contact" />
         <Route path="/tickets/:id" element={<CustomerTicket />} />

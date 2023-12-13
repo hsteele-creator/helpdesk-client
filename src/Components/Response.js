@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 import { handleChange } from "../helperFunctions";
 import {addResponse} from "../helperFunctions"
 
-const Response = ({ first, last, agent, type, ticketId, editMode, setResponseOpen }) => {
+const Response = ({ content, first, last, agent, type, ticketId, editMode, setResponseOpen }) => {
   const [cookies, setCookie, removeCookie] = useCookies(null);
   const [response, setResponse] = useState({
     type: type,
@@ -39,7 +39,8 @@ const Response = ({ first, last, agent, type, ticketId, editMode, setResponseOpe
             autoFocus
           ></textarea>
         )}
-        {!editMode && <p>{response.content}</p>}
+        {!editMode && <p>{content}</p>}
+        
         <p>Thanks, {cookies.company}</p>
 
         {editMode && (

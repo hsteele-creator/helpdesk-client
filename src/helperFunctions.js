@@ -21,7 +21,7 @@ export const getAgents = async (company, setState) => {
     }
   };
 
-// Get contacts from db
+// Get contacts by company from db
 export const getContacts = async (company, setState) => {
     try {
       const response = await fetch(
