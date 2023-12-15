@@ -104,3 +104,7 @@ export const getContacts = async (company, setState) => {
       console.error(e)
     }
   }
+
+  export const handleFilter = (e, setState) => {
+    setState(e.target.value)
+  }

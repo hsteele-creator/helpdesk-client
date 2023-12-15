@@ -11,6 +11,7 @@ import Tickets from "./Components/Tickets";
 import AddTicket from "./Components/AddTicket";
 import CustomerTicket from "./Components/CustomerTicket";
 import AddContact from "./Components/AddContact";
+import Main from "./Components/Main";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -19,7 +20,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/register" element={<Register />} />
-        <Route path="/" />
+        <Route path="/" element={<Main />} />
         <Route path="/tickets" element={<Tickets />} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/add-ticket" element={<AddTicket />} />

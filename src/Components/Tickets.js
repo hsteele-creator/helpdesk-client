@@ -4,19 +4,21 @@ import Nav from "./Nav";
 import { useCookies } from "react-cookie";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import {getTickets} from "../helperFunctions";
+import {getTickets, handleFilter} from "../helperFunctions";
 
 import Ticket from "./Ticket";
 
 const Dashboard = () => {
   const [cookies, setCookie, removeCookie] = useCookies(null);
   const [tickets, setTickets] = useState(null);
+  const [filterValue, setFilterValue] = useState("");
 
   useEffect(() => {
     getTickets(cookies.company, setTickets);
   }, []);
 
-  console.log(cookies)
+
+  const filteredTickets = filterValue === "" ? tickets : tickets?.filter(t => t.subject.toLowerCase().includes(filterValue.toLowerCase()))
 
   return (
     <div id="dashboard-main">
@@ -36,7 +38,7 @@ const Dashboard = () => {
             <button className="btn-light">Add Contact</button>
 
             <div id="search-container">
-              <input id="search"></input>
+              <input id="search" placeholder="Search By Title" onChange={(e) => handleFilter(e, setFilterValue)}></input>
               <button className="btn-color">Search</button>
             </div>
           </div>
@@ -47,7 +49,7 @@ const Dashboard = () => {
         </div>
 
         <div id="dashboard-tickets">
-          {tickets?.map(t => {
+          {filteredTickets?.map(t => {
             return <Ticket id={t.id} subject={t.subject} type={t.type} priority={t.priority} status={t.status} agent={t.agent} company={t.company} date={t.date} description={t.description}contact_first={t.contact_first} contact_last={t.contact_last} />
           })}
         </div>

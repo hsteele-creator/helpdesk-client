@@ -1,7 +1,7 @@
 import "../Css/Contacts.css";
 import Nav from "./Nav";
 import { useEffect, useState } from "react";
-import { getContacts } from "../helperFunctions";
+import { getContacts, handleFilter } from "../helperFunctions";
 import { useCookies } from "react-cookie";
 import LetterSqaure from "./LetterSquare";
 import { Link } from "react-router-dom";
@@ -16,13 +16,8 @@ const Contacts = () => {
     getContacts(cookies.company, setContacts);
   }, []);
 
-  const handleInputChange = (e) => {
-    setFilter(e.target.value)
-  }
-
   const filteredContacts = filter === "" ? contacts : contacts?.filter(c => c.email.includes(filter))
 
-  console.log(filteredContacts)
 
   return (
     <>
@@ -32,7 +27,7 @@ const Contacts = () => {
         <div id="contacts-holder" className="flex-column">
           <div id="contacts-nav">
             <div id="search-container">
-              <input placeholder="search by email" onChange={(e) => handleInputChange(e)}></input>
+              <input placeholder="search by email" onChange={(e) => handleFilter(e, setFilter)}></input>
               <button className="btn-color">Search</button>
             </div>
 
