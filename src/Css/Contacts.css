@@ -8,6 +8,17 @@
     margin: 0;
 }
 
+#top-contacts-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.email-contacts {
+    text-align: left;
+}
+
 #contacts-nav {
     width: 93vw;
     height: 80px;

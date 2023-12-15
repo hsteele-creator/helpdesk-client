@@ -5,14 +5,24 @@ import { getContacts } from "../helperFunctions";
 import { useCookies } from "react-cookie";
 import LetterSqaure from "./LetterSquare";
 import { Link } from "react-router-dom";
+import Contact from "./Contact";
 
 const Contacts = () => {
   const [cookies, setCookie, removeCookie] = useCookies(null);
   const [contacts, setContacts] = useState(null);
+  const [filter, setFilter] = useState("")
 
   useEffect(() => {
     getContacts(cookies.company, setContacts);
   }, []);
+
+  const handleInputChange = (e) => {
+    setFilter(e.target.value)
+  }
+
+  const filteredContacts = filter === "" ? contacts : contacts?.filter(c => c.email.includes(filter))
+
+  console.log(filteredContacts)
 
   return (
     <>
@@ -22,7 +32,7 @@ const Contacts = () => {
         <div id="contacts-holder" className="flex-column">
           <div id="contacts-nav">
             <div id="search-container">
-              <input placeholder="search by email"></input>
+              <input placeholder="search by email" onChange={(e) => handleInputChange(e)}></input>
               <button className="btn-color">Search</button>
             </div>
 
@@ -35,8 +45,22 @@ const Contacts = () => {
           </div>
 
           <div id="contacts-container">
-            {contacts?.map((c) => {
-              return <h1>{c.email}</h1>;
+            <div>
+              <div id="top-contacts-container">
+                <p>Contact</p>
+                <p className="email-contacts">Email</p>
+                <p className="phone-contacts">Phone</p>
+              </div>
+            </div>
+            {filteredContacts?.map((c) => {
+              return (
+                <Contact
+                  firstName={c.first_name}
+                  lastName={c.last_name}
+                  email={c.email}
+                  phone={c.phone}
+                />
+              );
             })}
           </div>
         </div>
