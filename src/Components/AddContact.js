@@ -24,7 +24,7 @@ const AddContact = () => {
         body: JSON.stringify(contact),
       });
 
-      setContact({});
+      setContact();
 
       const data = await newContact.json();
 

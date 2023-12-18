@@ -5,20 +5,29 @@ import { useCookies } from "react-cookie";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import {getTickets, handleFilter} from "../helperFunctions";
+import { useSearchParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import Ticket from "./Ticket";
 
 const Dashboard = () => {
+  const location = useLocation()
   const [cookies, setCookie, removeCookie] = useCookies(null);
   const [tickets, setTickets] = useState(null);
   const [filterValue, setFilterValue] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const myParam = new URLSearchParams(location.search).get('filter')
 
   useEffect(() => {
     getTickets(cookies.company, setTickets);
   }, []);
 
 
-  const filteredTickets = filterValue === "" ? tickets : tickets?.filter(t => t.subject.toLowerCase().includes(filterValue.toLowerCase()))
+  const filteredTickets = filterValue === "" ? tickets : tickets?.filter(t => t.subject.toLowerCase().includes(filterValue.toLowerCase()));
+
+ const specificTickets = myParam === null ? filteredTickets : filteredTickets?.filter(t => t.status === myParam);
+
+ console.log(specificTickets)
 
   return (
     <div id="dashboard-main">
@@ -49,7 +58,7 @@ const Dashboard = () => {
         </div>
 
         <div id="dashboard-tickets">
-          {filteredTickets?.map(t => {
+          {specificTickets?.map(t => {
             return <Ticket id={t.id} subject={t.subject} type={t.type} priority={t.priority} status={t.status} agent={t.agent} company={t.company} date={t.date} description={t.description}contact_first={t.contact_first} contact_last={t.contact_last} />
           })}
         </div>
