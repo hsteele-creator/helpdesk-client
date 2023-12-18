@@ -36,6 +36,8 @@
     background-color: white;
     padding: 20px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
 
 #todos-container p {
@@ -56,6 +58,19 @@
 
 #recent-tickets-container {
     width: 59vw;
-    height: 75vh;
     background-color: white;
+    box-sizing: border-box;
+}
+
+#recent-tickets-container h2 {
+    padding: 30px;
+}
+
+#view-tickets-btn {
+    margin: 20px;
+}
+
+#todos-bottom {
+    padding: 20px 0;
+    overflow: scroll;
 }

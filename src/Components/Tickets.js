@@ -27,7 +27,6 @@ const Dashboard = () => {
 
  const specificTickets = myParam === null ? filteredTickets : filteredTickets?.filter(t => t.status === myParam);
 
- console.log(specificTickets)
 
   return (
     <div id="dashboard-main">

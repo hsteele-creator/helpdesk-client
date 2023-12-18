@@ -1,0 +1,7 @@
+.main-ticket-container {
+    width: 100%;
+    padding: 20px;
+    border-bottom: 0.5px solid lightgrey;
+    display: flex;
+    align-items: center;
+}

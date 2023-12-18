@@ -13,6 +13,11 @@
     align-items: center;
 }
 
+#dashboard-tickets {
+    overflow: scroll;
+    height: 100vh;
+}
+
 #sort-container select {
     margin-left: 6px;
 }

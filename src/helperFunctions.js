@@ -108,3 +108,20 @@ export const getContacts = async (company, setState) => {
   export const handleFilter = (e, setState) => {
     setState(e.target.value)
   }
+
+
+// adds a todo
+  export const addTodo = async (state) => {
+    try {
+      const response = await fetch("http://localhost:8000/add-todo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(state),
+      });
+
+      const data = await response.json();
+      console.log(data);
+    } catch (e) {
+      console.error(e);
+    }
+  };
