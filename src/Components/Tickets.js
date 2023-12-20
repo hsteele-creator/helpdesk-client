@@ -24,7 +24,6 @@ const Dashboard = () => {
 
 
   const filteredTickets = filterValue === "" ? tickets : tickets?.filter(t => t.subject.toLowerCase().includes(filterValue.toLowerCase()));
-
  const specificTickets = myParam === null ? filteredTickets : filteredTickets?.filter(t => t.status === myParam);
 
 

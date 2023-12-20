@@ -4,15 +4,20 @@ import Nav from "./Nav";
 import { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { handleChange, getAgents, getContacts } from "../helperFunctions";
+import { useSearchParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const AddTicket = () => {
+  const location = useLocation();
   const [cookies, setCookie, removeCookie] = useCookies(null);
   const [agents, setAgents] = useState([]);
   const [error, setError] = useState(null);
   const [contacts, setContacts] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const email = new URLSearchParams(location.search).get('email');
   const [ticketData, setTicketData] = useState({
     subject: "",
-    contact_email: "",
+    contact_email: email || "",
     type: "Question",
     priority: "Low",
     status: "Open",
@@ -21,6 +26,8 @@ const AddTicket = () => {
     description: "",
     date: new Date(),
   });
+
+
 
   useEffect(() => {
     getAgents(cookies.company, setAgents);
@@ -60,6 +67,8 @@ const AddTicket = () => {
       setError("No inputs can be blank");
     }
   };
+
+  console.log(email)
 
   return (
     <>

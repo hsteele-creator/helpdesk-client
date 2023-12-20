@@ -25,8 +25,9 @@
     margin: 0 auto;
     box-sizing: border-box;
     background-color: white;
+    height: 100vh;
+    overflow: scroll;
 }
-
 #edit-ticket-container {
     width: 20vw;
     display: flex;

@@ -1,7 +1,7 @@
 import "../Css/Response.css";
 import { useState } from "react";
 import { useCookies } from "react-cookie";
-import { handleChange } from "../helperFunctions";
+import { handleChange, getTicketResponses } from "../helperFunctions";
 import {addResponse} from "../helperFunctions"
 
 const Response = ({ content, first, last, agent, type, ticketId, editMode, setResponseOpen }) => {

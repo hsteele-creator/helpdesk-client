@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const Todo = ({ getTodos, id, name, completed }) => {
   const [editMode, setEditMode] = useState(false);
-  const [newTodo, setNewTodo] = useState(name)
+  const [newTodo, setNewTodo] = useState(name);
 
   const editTodo = async () => {
     const response = await fetch(`http://localhost:8000/todos/${id}`, {
@@ -18,6 +18,19 @@ const Todo = ({ getTodos, id, name, completed }) => {
     getTodos();
   };
 
+  const deleteTodo = async () => {
+    try {
+      const response = await fetch(`http://localhost:8000/todos/${id}`, {
+        method: "DELETE",
+      });
+
+      getTodos()
+
+    } catch(e) {
+      console.error(e)
+    }
+  }
+
   return (
     <>
       <div className="todo-container">
@@ -27,7 +40,7 @@ const Todo = ({ getTodos, id, name, completed }) => {
           <button onClick={() => setEditMode(!editMode)}>Edit</button>
         )}
         {editMode && <button onClick={editTodo}>Update Todo</button>}
-        <button>Delete</button>
+        <button onClick={deleteTodo}>Delete</button>
       </div>
     </>
   );

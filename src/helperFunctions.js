@@ -125,3 +125,38 @@ export const getContacts = async (company, setState) => {
       console.error(e);
     }
   };
+
+  // Get todos
+  export const getTodos = async (company, setState, data) => {
+    try {
+      const response = await fetch(
+        `http://localhost:8000/todos/${company}`
+      );
+      const data = await response.json();
+      setState(data);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  // Get tickets by email
+  export const getContactTickets = async (email, setState) => {
+    try {
+      const response = await fetch(`http://localhost:8000/contact-tickets/${email}`);
+      const data = await response.json();
+      setState(data)
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  // Get contact by id
+  export const getContact = async (id, setState) => {
+    try {
+      const response = await fetch(`http://localhost:8000/get-contacts/${id}`);
+      const data = await response.json();
+      setState(data)
+    } catch (e) {
+      console.error(e);
+    }
+  };

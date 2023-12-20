@@ -10,13 +10,17 @@ import Contact from "./Contact";
 const Contacts = () => {
   const [cookies, setCookie, removeCookie] = useCookies(null);
   const [contacts, setContacts] = useState(null);
-  const [filter, setFilter] = useState("")
+  const [filter, setFilter] = useState("");
+
 
   useEffect(() => {
     getContacts(cookies.company, setContacts);
   }, []);
 
-  const filteredContacts = filter === "" ? contacts : contacts?.filter(c => c.email.includes(filter))
+  const filteredContacts =
+    filter === ""
+      ? contacts
+      : contacts?.filter((c) => c.email.includes(filter));
 
 
   return (
@@ -27,7 +31,10 @@ const Contacts = () => {
         <div id="contacts-holder" className="flex-column">
           <div id="contacts-nav">
             <div id="search-container">
-              <input placeholder="search by email" onChange={(e) => handleFilter(e, setFilter)}></input>
+              <input
+                placeholder="search by email"
+                onChange={(e) => handleFilter(e, setFilter)}
+              ></input>
               <button className="btn-color">Search</button>
             </div>
 
@@ -50,6 +57,7 @@ const Contacts = () => {
             {filteredContacts?.map((c) => {
               return (
                 <Contact
+                  id={c.id}
                   firstName={c.first_name}
                   lastName={c.last_name}
                   email={c.email}

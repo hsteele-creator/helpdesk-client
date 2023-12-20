@@ -1,7 +1,7 @@
 import "../Css/Main.css";
 import Nav from "./Nav";
 import { useEffect, useState } from "react";
-import { getTickets, handleChange } from "../helperFunctions";
+import { getTickets, handleChange, getTodos } from "../helperFunctions";
 import { useCookies } from "react-cookie";
 import { Link } from "react-router-dom";
 import MainTicket from "./MainTicket";
@@ -15,24 +15,18 @@ const Main = () => {
     completed: false,
     company: cookies.company,
   });
+
   const [todos, setTodos] = useState(null);
 
-  const getTodos = async () => {
-    try {
-      const response = await fetch(
-        `http://localhost:8000/todos/${cookies.company}`
-      );
-      const data = await response.json();
-      setTodos(data);
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
   useEffect(() => {
-    getTodos();
+    getTodos(cookies.company, setTodos);
     getTickets(cookies.company, setTickets);
   }, []);
+
+  const pending = tickets?.filter(t => t.status === "Pending");
+  const unresolved = tickets?.filter(t => t.status === "Open");
+  const closed= tickets?.filter(t => t.status === "Closed");
+
 
   const addTodo = async (state) => {
     try {
@@ -49,11 +43,13 @@ const Main = () => {
       });
 
       const data = await response.json();
-      console.log(data);
+      getTodos(cookies.company, setTodos)
     } catch (e) {
       console.error(e);
     }
   };
+
+
 
 
 
@@ -67,16 +63,19 @@ const Main = () => {
             <Link to={{ pathname: "/tickets", search: "?filter=Pending" }}>
               <div className="filter-tickets">
                 <p>Pending</p>
+                <p className="ticket-total">{pending?.length}</p>
               </div>
             </Link>
             <Link to={{ pathname: "/tickets", search: "?filter=Open" }}>
               <div className="filter-tickets">
                 <p>Unresolved</p>
+                <p className="ticket-total">{unresolved?.length}</p>
               </div>
             </Link>
             <Link to={{ pathname: "/tickets", search: "?filter=Closed" }}>
               <div className="filter-tickets">
                 <p>Closed</p>
+                <p className="ticket-total">{closed?.length}</p>
               </div>
             </Link>
           </div>

@@ -1,0 +1,33 @@
+.contact-page-container {
+    display: flex;
+}
+
+.contact-page-top {
+    width: 93vw;
+    box-sizing: border-box; 
+    padding: 50px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.contact-img {
+    width: 100px;
+}
+
+.contact-page-name-container {
+    display: flex;
+    align-items: center;
+}
+
+.contact-page-name {
+    padding-left: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.contact-page-right button {
+    width: 120px;
+    height: 40px;
+}
