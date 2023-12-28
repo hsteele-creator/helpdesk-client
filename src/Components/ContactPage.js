@@ -5,26 +5,48 @@ import { useEffect, useState } from "react";
 import { getContactTickets, getContact } from "../helperFunctions";
 import user from "../Images/user.png";
 import Ticket from "./Ticket";
-import { Link } from "react-router-dom";
-
+import { Link, Navigate } from "react-router-dom";
 const ContactPage = () => {
   const { email } = useParams();
   const { id } = useParams();
   const [contactTickets, setContactTickets] = useState(null);
   const [contact, setContact] = useState(null);
+  const [deleteMode, setDeleteMode] = useState(false);
+  const [redirect, setRedirect] = useState(null)
 
   useEffect(() => {
     getContactTickets(email, setContactTickets);
     getContact(id, setContact);
   }, []);
+
+  console.log(contact)
+
+  const deleteTicket = async () => {
+    try {
+      const response = await fetch(`http://localhost:8000/contact/${email}`, {
+        method: "DELETE",
+      });
+      setDeleteMode(false);
+      setRedirect(true)
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   return (
     <>
       <div className="contact-page-container">
+        {redirect && <Navigate to="/tickets"/>}
         <Nav />
         <div className="contac-page-holder">
           <div className="contact-page-btns-container">
-            <button>Edit</button>
-            <button>Page</button>
+            <button className="btn-light">Edit</button>
+            <button
+              className="btn-light"
+              onClick={() => setDeleteMode(!deleteMode)}
+            >
+              Delete
+            </button>
           </div>
           <div className="contact-page-top">
             <div className="contact-page-name-container">
@@ -56,6 +78,15 @@ const ContactPage = () => {
           })}
         </div>
       </div>
+      {deleteMode && (
+        <div className="center delete-div">
+          <button className="delete-btn">X</button>
+          <p>Are you sure you want to delete this contact?</p>
+          <button className="btn-light" onClick={deleteTicket}>
+            Yes{" "}
+          </button>
+        </div>
+      )}
     </>
   );
 };

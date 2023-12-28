@@ -97,7 +97,7 @@ const Main = () => {
               </div>
               <div id="todos-bottom">
                     {todos?.map(t => {
-                        return <Todo getTodos={getTodos} name={t.name} id={t.id} completed={t.completed}/>
+                        return <Todo getTodos={() => getTodos(cookies.company, setTodos)} name={t.name} id={t.id} completed={t.completed}/>
                     })}
               </div>
             </div>

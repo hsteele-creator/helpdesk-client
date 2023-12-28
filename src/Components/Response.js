@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 import { handleChange, getTicketResponses } from "../helperFunctions";
 import {addResponse} from "../helperFunctions"
 
-const Response = ({ content, first, last, agent, type, ticketId, editMode, setResponseOpen }) => {
+const Response = ({ setAllResponses, id, getTicketResponses, content, first, last, agent, type, ticketId, editMode, setResponseOpen }) => {
   const [cookies, setCookie, removeCookie] = useCookies(null);
   const [response, setResponse] = useState({
     type: type,
@@ -19,6 +19,23 @@ const Response = ({ content, first, last, agent, type, ticketId, editMode, setRe
   const fullName = first + " " + last;
   const normal = type === "Normal";
   const person = response.incoming === false ? agent : fullName;
+
+  const addResponse = async (response, setResponse) => {
+    try {
+      const newResponse = await fetch("http://localhost:8000/add-response", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(response),
+      });
+
+      const data = await newResponse.json();
+      setResponse(null);
+
+      getTicketResponses(id, setAllResponses)
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   return (
     <>

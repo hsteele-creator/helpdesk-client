@@ -2,6 +2,10 @@
     display: flex;
 }
 
+.contact-page-btns-container {
+    padding: 20px;
+}
+
 .contact-page-top {
     width: 93vw;
     box-sizing: border-box; 
@@ -30,4 +34,39 @@
 .contact-page-right button {
     width: 120px;
     height: 40px;
+}
+
+.delete-div {
+    height: 300px;
+    width: 300px;
+    background-color: #12344D;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+.delete-div button {
+    margin-top: 10px;
+}
+
+.delete-btn {
+    position: absolute;
+    top: 1%;
+    right: 3%;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+
+.delete-btn:hover {
+    cursor: pointer;
 }

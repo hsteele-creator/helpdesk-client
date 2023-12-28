@@ -26,11 +26,13 @@ const AddContact = () => {
 
       setContact();
 
-      const data = await newContact.json();
+      const data = await newContact.json()
 
       if (data.detail) {
         setError(data.detail);
       }
+
+      alert('Contact added succesfully!')
     } catch (e) {
       console.error(e);
     }
@@ -45,25 +47,25 @@ const AddContact = () => {
           <form onSubmit={addContact} id="add-contact-form">
             <input
               onChange={(e) => handleChange(e, contact, setContact)}
-              value={contact.first_name || ""}
+              value={contact?.first_name || ""}
               name="first_name"
               placeholder="first name"
             ></input>
             <input
               onChange={(e) => handleChange(e, contact, setContact)}
-              value={contact.last_name || ""}
+              value={contact?.last_name || ""}
               name="last_name"
               placeholder="last name"
             ></input>
             <input
               onChange={(e) => handleChange(e, contact, setContact)}
-              value={contact.email || ""}
+              value={contact?.email || ""}
               name="email"
               placeholder="email"
             ></input>
             <input
               onChange={(e) => handleChange(e, contact, setContact)}
-              value={contact.phone || ""}
+              value={contact?.phone || ""}
               name="phone"
               placeholder="phone"
             ></input>
